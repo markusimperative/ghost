@@ -8,14 +8,21 @@ services:
     startCommand: |
       npm start --development
     envVars:
+      # use a Ghost-supported Node version
+      - key: NODE_VERSION
+        value: 20
+      # run in development so sqlite is allowed
       - key: NODE_ENV
         value: development
+      # change later to your real domain
       - key: url
         value: https://anaesthetik.onrender.com
+      # sqlite DB
       - key: database__client
         value: sqlite3
       - key: database__connection__filename
         value: content/data/ghost.db
+      # simple mail
       - key: mail__transport
         value: direct
     autoDeploy: true
